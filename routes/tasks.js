@@ -28,7 +28,7 @@ router.get('/task/:id', (req, res, next) => {
 // save tasks
 router.post('/task', (req, res, next) => {
   const task = req.body;
-  if(!task.title || !task.isDone + "") {
+  if(!task.title || !(task.isDone + "")) {
     res.status(400)
     res.json({ "error": "Bad Data"})
   } else {
@@ -57,7 +57,7 @@ router.put('/task/:id', (req, res, next) => {
   const updateTask = {}
 
   if(task.isDone) {
-    updateTask.task = task.isDone
+    updateTask.isDone = task.isDone
   }
   if(task.title) {
     updateTask.title = task.title
